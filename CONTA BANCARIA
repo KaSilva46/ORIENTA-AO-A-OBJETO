@@ -1,0 +1,78 @@
+#CONTA BANCÁRIO
+
+#Atributos
+  #número
+  #saldo
+  #nome
+  #tipo
+  #status
+  #limite
+#Métodos
+  #depositar
+  #sacar
+  #ativarconta
+  #verificarsaldo
+
+class Conta_bancaria:
+    def __init__(self,numero,saldo,nome,tipo,limite,status=False):
+     self.numero=numero
+     self.saldo=saldo
+     self.nome=nome
+     self.tipo=tipo
+     self.status=status
+     self.limite=limite
+    def l (self):
+        print('-=-'*5)
+    def depositar (self,dinheiro):
+        if self.status == False:
+            print("a conta está desativada!")
+        else:
+            self.saldo=self.saldo+dinheiro
+
+        return
+
+    def sacar (self,saque):
+        if self.status == False:
+            print("a conta está desativada!")
+        else:
+            if self.saldo>saque:
+                self.saldo=self.saldo-saque
+            else:
+                print("sua conta está negativada!")
+                self.saldo=0
+                self.limite=self.limite-self.saldo-saque
+                print(f'{self.limite} é o mimite')
+    def ativar_conta (self):
+        self.status =True
+    def desativar_conta (self):
+         self.status =False
+         print("sua conta foi desativada por roubo")
+    def verificar_saldo(self):
+         print(f"o saldo relativo a conta é: {self.saldo}")
+    def limite_bancario (self):
+        if self.status == False:
+            print("a conta está desativada!")
+        else:
+           print( self.limite)
+
+
+####   CODIGO MAIN
+
+
+p1=Conta_bancaria(500188,0,"Karen","conta corrente",5000)
+
+R=input("deseja ativar a conta?")
+if R=='sim':
+    print("conta está ativada!")
+
+    p1.ativar_conta()
+else:
+    print("conta está desativada!")
+
+money=float(input("deseja depositar qual valor?"))
+p1.depositar(money)
+p1.verificar_saldo()
+
+sacar_dinheiro=float(input("deseja sacar quanto?"))
+p1.sacar(sacar_dinheiro)
+p1.verificar_saldo()
