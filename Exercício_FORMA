@@ -1,0 +1,77 @@
+biblioteca
+
+'''Crie uma classe chamada Forma, que possui os
+atributos area e perimetro.
+– Implemente as subclasses Retangulo e Triangulo, 
+que devem conter os métodos calculaArea e
+calculaPerimetro. A classe Triangulo deve ter 
+também o atributo altura.
+• No código de teste crie um objeto da classe
+Triangulo e outro da Classe Retangulo. Verifique
+se os dois são mesmo instancias de Forma (use
+instanceof) , e calcule a área de cada um'''
+
+class Forma:
+    def __init__(self,altura,base=0):
+        self.altura=altura
+        self.base=base
+
+class Retangulo(Forma):
+    def __init__(self, base, altura):
+        super().__init__(altura, base)
+        self.base=base
+        self.altura=altura
+    def areacalcular(self):
+        self.area=(self.altura*self.base)/2
+        print(f'A área do retângulo é: {self.area}')
+    def perimetrocalcular(self):
+        self.perimetro=self.base*2 + self.altura*2
+        print(f'O perimetro do retângulo é: {self.perimetro}')
+
+
+class Triangulo(Forma):
+    def __init__(self,base,altura):
+        self.base=base
+        self.altura=altura
+    def areacalcular(self):
+        self.area=self.altura*self.base
+        print(f'A área do triângulo é: {self.area}')
+    def perimetrocalcular(self):
+        self.perimetro=self.base*2 + self.altura*2
+        print(f'O perimetro do triângulo é: {self.perimetro}')
+
+
+class quadrado(Forma):
+    def calculararea(self):
+            self.area = self.altura**2
+            print(f'A área do quadrado é: {self.area}')
+    def calcularperimetro(self):
+        self.perimetro= self.altura*4
+        print(f'O perímetro do quadrado é: {self.perimetro}')
+        
+   ######
+   main
+    from biblioteca import*
+
+
+
+Altura_R=float(input("Qual é a altura do retângulo? "))
+Base_R=float(input("Qual é a base do retângulo? "))
+r=Retangulo(Base_R,Altura_R)
+r.areacalcular()
+r.perimetrocalcular()
+
+
+
+Altura_T=float(input("Qual é a altura do triângulo? "))
+Base_T=float(input("Qual é a base do triângulo? "))
+r1=Triangulo(Base_T,Altura_T)
+r1.areacalcular()
+r1.perimetrocalcular()
+
+Altura_Q=float(input("Qual é a altura do quadrado? "))
+Base_Q=float(input("qual é a base do quadrado?"))
+r2=quadrado(Altura_Q,Base_Q)
+r2.calculararea()
+r2.calcularperimetro()
+    
